@@ -1,0 +1,67 @@
+\documentclass[a4paper,11pt,oneside]{yapbook}
+%TODO remove
+\usepackage{lipsum}
+
+\begin{document}
+
+\frontmatter
+
+\begin{abstract}
+
+\lipsum
+
+\end{abstract}
+
+\tableofcontents
+
+\introduction{Introducere}
+
+Aceasta este o introducere
+
+\mainmatter
+
+\part{Part Foo}
+
+\chapter{Chapter one}
+
+\begin{chapsummary}
+This is the summary
+%\footnote{a short abstract}
+of the chapter.
+
+\lipsum[1]
+
+\end{chapsummary}
+
+\lipsum[1]
+
+\section{normal text}
+
+\section{italic text}
+\textit{This is some italic text.}
+
+\section{slanted text}
+\textsl{This text is slanted}. (\textit{compare to italic}).
+
+\section{monospaced text}
+\texttt{this text is monospaced}.
+
+\part{Part Bar}
+This part demonstrates some environments available.
+
+\backmatter
+
+%\Printindex{smb}{Index of Symbols}
+%\listoffigures
+%\listoftables
+%%\lstlistoflistings
+
+%%\listofexercices
+%%\todototoc
+%%\listoftodos[TO DOs]
+
+%%other styles plain or harvard or amsalpha
+%\bibliographystyle{amsalpha}
+%\bibliography{bibliography}
+
+\end{document}
