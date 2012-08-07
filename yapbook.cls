@@ -52,7 +52,7 @@
     \RequirePackage{titlepage-\YAPBOOK@titlepagestyle}
 }
 \renewcommand*{\maketitle}{
- %   \@maketitle
+    \@maketitle
 %ORIGINAL book.cls definition:
 %  \begingroup
     %\renewcommand\thefootnote{\@fnsymbol\c@footnote}%
