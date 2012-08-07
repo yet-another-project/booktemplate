@@ -1,53 +1,101 @@
-\documentclass[a4paper,11pt,oneside]{yapbook}
+\documentclass[a4paper,12pt,fleqn,twoside,openright,titlepagestyle=phpro]{yapbook}
 %TODO remove
 \usepackage{lipsum}
 
+\usepackage[firstpage]{draftwatermark}
+\SetWatermarkScale{1}
+
 \begin{document}
+
+\title[Pentru programatorii \ldots]{Title test}
+\author{Flavius Aspra}
+\date{\today}
+%\email{yet.another.project@librelist.com}
 
 \frontmatter
 
-\begin{abstract}
+    \maketitle
 
-\lipsum
+    \tableofcontents
 
-\end{abstract}
+    \introduction{Introduction}
 
-\tableofcontents
+        This is an introduction.
 
-\introduction{Introducere}
-
-Aceasta este o introducere
+        Isolated Japanese text: \jptext{守 破 離}
 
 \mainmatter
 
-\part{Part Foo}
+    \part{Part Foo}
 
-\chapter{Chapter one}
+        \chapter{Foo}
+            \begin{chapsummary}
+            This is the summary
+            %\footnote{a short abstract}
+            of the chapter.
 
-\begin{chapsummary}
-This is the summary
-%\footnote{a short abstract}
-of the chapter.
+            \lipsum[1]
 
-\lipsum[1]
+            \end{chapsummary}
 
-\end{chapsummary}
+            \lipsum[1]
 
-\lipsum[1]
+            \section{normal text}
 
-\section{normal text}
+            \section{italic text}
+            \textit{This is some italic text.}
 
-\section{italic text}
-\textit{This is some italic text.}
+            \section{slanted text}
+            \textsl{This text is slanted}. (\textit{compare to italic}).
 
-\section{slanted text}
-\textsl{This text is slanted}. (\textit{compare to italic}).
+            \section{monospaced text}
+            \texttt{this text is monospaced}.
 
-\section{monospaced text}
-\texttt{this text is monospaced}.
+        \chapter{Environments and Commands}
 
-\part{Part Bar}
-This part demonstrates some environments available.
+            \attention{This is an \textsl{attention} block}
+            \good{This is an \textsl{good} block}
+            \bad{This is an \textsl{bad} block}
+
+            \begin{Exercise*}[title={This is an Exercise},difficulty=1]
+
+            \ExePart
+
+            Some content
+
+            \end{Exercise*}
+
+            Verbatim, with annotated margins:
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+            Hello
+            \nl{1}World
+            \end{Verbatim}
+
+            A code listing:
+
+            \begin{lstlisting}[caption={This is the title}]
+            //some code
+            \end{lstlisting}
+
+
+    \part{Long sections to see headings and footers}
+
+        \section{Long section}
+
+        \lipsum
+        \lipsum
+        \lipsum
+
+%\subsection{Long subsection}
+
+%\lipsum
+
+%\subsubsection{Long subsubsection}
+
+%\lipsum
+
+\appendix
 
 \backmatter
 

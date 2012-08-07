@@ -1,44 +1,188 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{yapbook}[2010/10/04 Yet Another Project''s book class]
-\LoadClass{amsbook}
 
+%------------------------------------------------------------------------------
+% useful for tex programming
+%------------------------------------------------------------------------------
+\RequirePackage{needspace}
+\RequirePackage[usenames,dvipsnames]{color}
+\RequirePackage{kvoptions}
+
+\SetupKeyvalOptions{
+    family=YAPBOOK,
+    prefix=YAPBOOK@
+}
+\DeclareStringOption[phpro]{titlepagestyle}
+\DeclareOption*{\PassOptionsToClass{\CurrentOption}{book}}
+
+\ProcessKeyvalOptions*
+\ProcessOptions
+
+\LoadClass{book}
 %------------------------------------------------------------------------------
 %environment specific
 %------------------------------------------------------------------------------
 %do the right thing on each driver
-\usepackage{ifxetex}
+\RequirePackage{ifxetex}
 
 \ifxetex
-    \usepackage{fontspec}
-    \usepackage{xunicode}
+    \RequirePackage{fontspec}
+    \RequirePackage{xunicode}
     \defaultfontfeatures{Mapping=tex-text} % To support LaTeX quoting style
     \defaultfontfeatures{Ligatures=TeX}
+    \setmainfont[%ItalicFont={Neuton},
+        SlantedFont={Charis SIL},
+        SlantedFeatures={FakeSlant=0.3}
+    ]{Charis SIL}
+    % japanese
+    \RequirePackage{xeCJK}
+    \setCJKmainfont{DejaVu Sans Mono}
+    \setCJKfamilyfont{sf}{Kozuka Mincho Pr6N:style=R,Regular}
+    \setCJKfamilyfont{tt}{DejaVu Sans Mono}
 \else
-    \usepackage[utf8]{inputenc}
-    \usepackage[T1]{fontenc}
+    \RequirePackage[utf8]{inputenc}
+    \RequirePackage[T1]{fontenc}
 \fi
 
 %------------------------------------------------------------------------------
 %Semantic structure (and structure in general)
 %------------------------------------------------------------------------------
+%title page
+\def\@maketitle{
+    \RequirePackage{titlepage-\YAPBOOK@titlepagestyle}
+}
+\renewcommand*{\maketitle}{
+ %   \@maketitle
+%ORIGINAL book.cls definition:
+%  \begingroup
+    %\renewcommand\thefootnote{\@fnsymbol\c@footnote}%
+    %\def\@makefnmark{\rlap{\@textsuperscript{\normalfont\@thefnmark}}}%
+    %\long\def\@makefntext##1{\parindent 1em\noindent
+            %\hb@xt@1.8em{%
+                %\hss\@textsuperscript{\normalfont\@thefnmark}}##1}%
+    %\if@twocolumn
+      %\ifnum \col@number=\@ne
+        %\@maketitle
+      %\else
+        %\twocolumn[\@maketitle]%
+      %\fi
+    %\else
+      %\newpage
+      %\global\@topnum\z@   % Prevents figures from going at top of page.
+      %\@maketitle
+    %\fi
+    %\thispagestyle{plain}\@thanks
+  %\endgroup
+  %\setcounter{footnote}{0}%
+  %\global\let\thanks\relax
+  %\global\let\maketitle\relax
+  %\global\let\@maketitle\relax
+  %\global\let\@thanks\@empty
+  %\global\let\@author\@empty
+  %\global\let\@date\@empty
+  %\global\let\@title\@empty
+  %\global\let\title\relax
+  %\global\let\author\relax
+  %\global\let\date\relax
+  %\global\let\and\relax
+}
+%\renewcommand*{\@maketitle}[1]{%
+%\begin{titlepage}
+    %\thispagestyle{empty}
+     %\null
+     %\vskip 2em%
+     %\begin{center}%
+      %\textsc{\huge \@title}
+      %\vspace{1em}
+      %\hrule
+      %\vspace{3em}
+      %\textit{\textbf{\shorttitle}}
+      %\vspace{3em}
+      %\hrule
+      %\vspace{8em}
+      %\authors \\
+      %\vspace{3em}
+      %\@date
+     %\end{center}
+     %\vfill
+     %\begin{flushright}
+     %O iniţiativă \emph{Yet Another Project}\\
+     %Homepage: \url{http://yet-another-project.github.com/}
+     %\end{flushright}
+%\end{titlepage}
+%}
+
 %The introductory chapter, which does not really contain information on the
 %matter at stake
-\newcommand*{\introduction}[1]{\chapter*{#1}}
+\newcommand*{\introduction}[1]{\cleardoublepage\chapter*{#1}}
 
 %chapter intros
-\usepackage{framed}
+\RequirePackage{framed}
 %\definecolor{shadecolor}{rgb}{0.95,0.20,0.20}% red{0,0,0}% black
 \newenvironment{chapsummary}%
 {\vskip -15pt\begin{leftbar}\begin{quotation}\begin{itshape}}%
 {\end{itshape}\end{quotation}\end{leftbar}}%
 
+%japanese text
+\newcommand{\jptext}[1]{\sffamily#1\rmfamily}
+
+%interesting blocks
+\let\checkmark\relax
+\RequirePackage{dingbat}
+\newcommand{\attention}[1]{\vskip 1em\begin{Large}\leftpointright\end{Large}\parbox{15.9cm}{#1} \vskip 1em}
+\newcommand{\good}[1]{\vskip 1em\begin{Large}\leftthumbsup\end{Large}\parbox{15.9cm}{#1}\vskip 1em}
+\newcommand{\bad}[1]{\vskip 1em\begin{Large}\leftthumbsdown\end{Large}\parbox{15.9cm}{#1}\vskip 1em}
+
+%exercises
+\RequirePackage{exercise}
+\renewcommand{\ExerciseName}{Exercițiu}
+\renewcommand{\ExePartName}{{\goodbreak}Partea}
+\renewcommand{\ExerciseHeader}{\needspace{5\baselineskip} \vskip .5em\hrule\vskip 1em\centerline{\textbf{\large\smallpencil
+\ExerciseHeaderNB\ExerciseHeaderTitle%
+\ExerciseHeaderDifficulty\ExerciseHeaderOrigin\medskip}}}
+\makeatletter\def\endExerciseEnv{\termineliste{1}\@EndExeBox\nobreak\vskip .5em\hrule\vskip 1em\needspace{-10\baselineskip}}\makeatother
+
+%indexes
+%\RequirePackage{multind} %TODO
+%\makeindex{en-ro}
+%\newcommand{\engl}[2]{#1 (en. \textsl{#2})\index{en-ro}{#2}}
+
+%listings
+\RequirePackage{listings}
+\lstdefinelanguage{pseudocode}{%
+keywords={daca,atunci,altfel,start,sfarsit,citeste,afiseaza},%
+basicstyle=\ttfamily,%
+keywordstyle=\bfseries,%
+showstringspaces=false,%
+extendedchars}[keywords] 
+\lstset{%
+    basicstyle=\footnotesize\ttfamily,
+    numbers=left,
+    numberstyle=\tiny,
+    numbersep=5pt,
+    tabsize=4,
+    extendedchars=true,
+    breaklines=true,
+    frame=b,
+    showtabs=false,
+    xleftmargin=17pt,
+    showspaces=true,
+    showstringspaces=true,
+    keywordstyle=\color{Red},
+    stringstyle=\color{OliveGreen},
+    identifierstyle=\color{Blue},
+    frame=shadowbox,
+    rulesepcolor=\color{Gray},
+    escapeinside={\%*}{*)},     % if you want to add a comment within your code
+    mathescape=false
+}
 %------------------------------------------------------------------------------
 %Visuals (hard-coded for all YAP books)
 %------------------------------------------------------------------------------
-\usepackage[left=2cm,top=3cm,right=1.5cm,bottom=2cm]{geometry}
-\usepackage[ocgcolorlinks,unicode]{hyperref} %TODO: ocgcolorlinks does not work, TODO: pass arg "xetex"
+\RequirePackage[left=2cm,top=3cm,right=3cm,bottom=1.5cm]{geometry}
+\RequirePackage[ocgcolorlinks,unicode]{hyperref} %TODO: ocgcolorlinks does not work, TODO: pass arg "xetex"
 \hypersetup{%
-%    bookmarks=true,         % show bookmarks bar?
+ %   bookmarks=true,         % show bookmarks bar?
     unicode=true,          % non-Latin characters in Acrobat’s bookmarks
     pdftoolbar=true,        % show Acrobat’s toolbar?
     pdfmenubar=true,        % show Acrobat’s menu?
@@ -52,14 +196,45 @@
     pdfkeywords={programare php}, % list of keywords
     pdfnewwindow=true,      % links in new window
     colorlinks=false,       % false: boxed links; true: colored links
-%    linkcolor=red,          % color of internal links
-%    citecolor=green,        % color of links to bibliography
-%    filecolor=magenta,      % color of file links
-%    urlcolor=red,           % color of external links
+    linkcolor=red,          % color of internal links
+    citecolor=green,        % color of links to bibliography
+    filecolor=magenta,      % color of file links
+    urlcolor=red,           % color of external links
     linkbordercolor={1 0 0}
 }
+%%numbering segments in Verbatim
+\RequirePackage{fancyvrb}
+\makeatletter%
+\newcommand{\nl}[1]{\hbox to\z@{%
+\hss(#1)\kern3pt}}%
+\makeatother
 
-\usepackage[Lenny]{fncychap}
+%indent first paragraph
+\RequirePackage{indentfirst}
 
-
-\usepackage{listings}
+%headings
+%\usepackage{titlesec}
+\tolerance=1
+\emergencystretch=\maxdimen
+\hyphenpenalty=10000
+\hbadness=10000
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\setlength{\headheight}{14pt}
+%\renewcommand{\chaptermark}[1]{\markright{#1}{}}
+%\renewcommand{\sectionmark}[1]{\markright{#1}{}}
+%\fancyhead[LO,L]{Dezvoltare web cu PHP}
+%\fancyhead[RO,R]{\rightmark}
+%\fancyfoot[CO,C] {}
+%\titleformat{\section}{\huge}{}{0em}{}
+%%%% some fixes for underfull/overfull caused by this
+%------------------------------------------------------------------------------
+%Misc. Packages
+%------------------------------------------------------------------------------
+\RequirePackage[Lenny]{fncychap}
+\RequirePackage{listings}
+\let\sups\relax
+\RequirePackage{tipa}
+\RequirePackage{keystroke}
+\RequirePackage{float}
+\RequirePackage{alltt}
