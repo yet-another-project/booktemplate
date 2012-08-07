@@ -1,0 +1,34 @@
+\documentclass[10pt]{article}
+
+\usepackage{fontspec}
+\defaultfontfeatures{Ligatures=TeX}
+\setmainfont[SlantedFont={Charis SIL},SlantedFeatures={FakeSlant=0.2}]{Charis SIL}
+
+\usepackage{xeCJK}
+\setCJKmainfont{DejaVu Sans Mono}
+\setCJKfamilyfont{sf}{Kozuka Mincho Pr6N:style=R,Regular}
+\setCJKfamilyfont{tt}{DejaVu Sans Mono}
+\newcommand{\jptext}[1]{\sffamily#1}
+
+
+\begin{document}
+%Roman font Charis SIL:
+hello world \textit{italic text} and \textsl{slanted text}.
+Diacritics: șş țţ ȘŞ ȚŢ î Î ă Ă
+
+\texttt{monospaced font}
+
+Japanese: \jptext{守 破 離}
+
+----------------------------------------------
+
+%Sans serif font:
+\sffamily
+hello world \textit{italic text} and \textsl{slanted text}.
+Diacritics: șş țţ ȘŞ ȚŢ î Î ă Ă
+
+\texttt{monospaced font}
+
+Japanese: \jptext{守 破 離}
+\end{document}
+
