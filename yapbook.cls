@@ -47,10 +47,9 @@
 %------------------------------------------------------------------------------
 %Semantic structure (and structure in general)
 %------------------------------------------------------------------------------
-%title page
-\def\@maketitle{
-    \RequirePackage{titlepage-\YAPBOOK@titlepagestyle}
-}
+
+
+\RequirePackage{titlepage-\YAPBOOK@titlepagestyle}
 \renewcommand*{\maketitle}{
     \@maketitle
 %ORIGINAL book.cls definition:
@@ -86,31 +85,6 @@
   %\global\let\date\relax
   %\global\let\and\relax
 }
-%\renewcommand*{\@maketitle}[1]{%
-%\begin{titlepage}
-    %\thispagestyle{empty}
-     %\null
-     %\vskip 2em%
-     %\begin{center}%
-      %\textsc{\huge \@title}
-      %\vspace{1em}
-      %\hrule
-      %\vspace{3em}
-      %\textit{\textbf{\shorttitle}}
-      %\vspace{3em}
-      %\hrule
-      %\vspace{8em}
-      %\authors \\
-      %\vspace{3em}
-      %\@date
-     %\end{center}
-     %\vfill
-     %\begin{flushright}
-     %O iniţiativă \emph{Yet Another Project}\\
-     %Homepage: \url{http://yet-another-project.github.com/}
-     %\end{flushright}
-%\end{titlepage}
-%}
 
 %The introductory chapter, which does not really contain information on the
 %matter at stake
