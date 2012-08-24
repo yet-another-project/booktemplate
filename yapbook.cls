@@ -47,11 +47,15 @@
 %------------------------------------------------------------------------------
 %Semantic structure (and structure in general)
 %------------------------------------------------------------------------------
+\newcommand{\@subtitle}{}
+\newcommand{\subtitle}[1]{
+   \renewcommand{\@subtitle}{#1}}
 
-
-\RequirePackage{titlepage-\YAPBOOK@titlepagestyle}
+\RequirePackage{styles/\YAPBOOK@titlepagestyle/titlepage}
 \renewcommand*{\maketitle}{
     \@maketitle
+    \global\let\@subtitle\@empty
+    \global\let\subtitle\relax
 %ORIGINAL book.cls definition:
 %  \begingroup
     %\renewcommand\thefootnote{\@fnsymbol\c@footnote}%
@@ -85,6 +89,17 @@
   %\global\let\date\relax
   %\global\let\and\relax
 }
+\renewcommand*\frontmatter{%
+    \cleardoublepage
+    \pagestyle{empty}
+  \@mainmatterfalse
+  \pagenumbering{roman}}
+
+\renewcommand*\mainmatter{%
+    \cleardoublepage
+    \pagestyle{fancy}
+  \@mainmattertrue
+  \pagenumbering{arabic}}
 
 %The introductory chapter, which does not really contain information on the
 %matter at stake
@@ -153,7 +168,7 @@ extendedchars}[keywords]
 %------------------------------------------------------------------------------
 %Visuals (hard-coded for all YAP books)
 %------------------------------------------------------------------------------
-\RequirePackage[left=2cm,top=3cm,right=3cm,bottom=1.5cm]{geometry}
+\RequirePackage[left=2cm,top=3cm,right=3cm,bottom=2cm]{geometry}
 \RequirePackage[ocgcolorlinks,unicode]{hyperref} %TODO: ocgcolorlinks does not work, TODO: pass arg "xetex"
 \hypersetup{%
  %   bookmarks=true,         % show bookmarks bar?
