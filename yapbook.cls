@@ -173,7 +173,7 @@ extendedchars}[keywords]
 %------------------------------------------------------------------------------
 %Visuals (hard-coded for all YAP books)
 %------------------------------------------------------------------------------
-\RequirePackage[left=2cm,top=3cm,right=3cm,bottom=2cm]{geometry}
+\RequirePackage[left=3cm,top=3cm,right=2cm,bottom=2cm]{geometry}
 \RequirePackage[ocgcolorlinks,unicode]{hyperref} %TODO: ocgcolorlinks does not work, TODO: pass arg "xetex"
 \hypersetup{%
  %   bookmarks=true,         % show bookmarks bar?
