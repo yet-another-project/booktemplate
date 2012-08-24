@@ -54,8 +54,8 @@
 \RequirePackage{styles/\YAPBOOK@style/titlepage}
 \renewcommand*{\maketitle}{
     \@maketitle
-    \global\let\@subtitle\@empty
-    \global\let\subtitle\relax
+    %\global\let\@subtitle\@empty
+    %\global\let\subtitle\relax
 %ORIGINAL book.cls definition:
 %  \begingroup
     %\renewcommand\thefootnote{\@fnsymbol\c@footnote}%
@@ -90,8 +90,9 @@
   %\global\let\and\relax
 }
 
-\newcommand\makecopyrightpage{
-
+\RequirePackage{styles/\YAPBOOK@style/copyrightpage}
+\newcommand*\makecopyright{
+    \@makecopyright
 }
 \renewcommand*\frontmatter{%
     \cleardoublepage
