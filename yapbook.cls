@@ -12,7 +12,7 @@
     family=YAPBOOK,
     prefix=YAPBOOK@
 }
-\DeclareStringOption[phpro]{titlepagestyle}
+\DeclareStringOption[phpro]{style}
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{book}}
 
 \ProcessKeyvalOptions*
@@ -51,7 +51,7 @@
 \newcommand{\subtitle}[1]{
    \renewcommand{\@subtitle}{#1}}
 
-\RequirePackage{styles/\YAPBOOK@titlepagestyle/titlepage}
+\RequirePackage{styles/\YAPBOOK@style/titlepage}
 \renewcommand*{\maketitle}{
     \@maketitle
     \global\let\@subtitle\@empty
@@ -88,6 +88,10 @@
   %\global\let\author\relax
   %\global\let\date\relax
   %\global\let\and\relax
+}
+
+\newcommand\makecopyrightpage{
+
 }
 \renewcommand*\frontmatter{%
     \cleardoublepage
