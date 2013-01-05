@@ -4,4 +4,4 @@ yapbook.pdf: styles/phpro/titlepage.sty styles/phpro/copyrightpage.sty yapbook.c
 .PHONY: clean
 
 clean:
-	rm -rf *.{out,log,aux,toc}
+	rm -rf *.{out,log,aux,toc,pdf}
