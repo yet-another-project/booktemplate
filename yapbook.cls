@@ -49,11 +49,14 @@
 %------------------------------------------------------------------------------
 \newcommand{\@subtitle}{}
 \newcommand{\subtitle}[1]{
-   \renewcommand{\@subtitle}{#1}}
+   \renewcommand{\@subtitle}{#1}
+   \def\thesubtitle{{#1}} %TODO: make useful \thesubtitle, not {\thesubtitle}
+}
 
 \RequirePackage{styles/\YAPBOOK@style/titlepage}
 \renewcommand*{\maketitle}{
     \@maketitle
+    \def\thetitle{{\@title}} %TODO: make useful \thetitle, not {\thetitle}
     %\global\let\@subtitle\@empty
     %\global\let\subtitle\relax
 %ORIGINAL book.cls definition:
@@ -108,7 +111,7 @@
 
 %The introductory chapter, which does not really contain information on the
 %matter at stake
-\newcommand*{\introduction}[1]{\cleardoublepage\chapter*{#1}}
+\newcommand*{\introduction}[1]{\cleardoublepage\chapter*{#1}\phantomsection\addcontentsline{toc}{chapter}{#1}}
 
 %chapter intros
 \RequirePackage{framed}
@@ -123,9 +126,9 @@
 %interesting blocks
 \let\checkmark\relax
 \RequirePackage{dingbat}
-\newcommand{\attention}[1]{\vskip 1em\begin{Large}\leftpointright\end{Large}\parbox{15.9cm}{#1} \vskip 1em}
-\newcommand{\good}[1]{\vskip 1em\begin{Large}\leftthumbsup\end{Large}\parbox{15.9cm}{#1}\vskip 1em}
-\newcommand{\bad}[1]{\vskip 1em\begin{Large}\leftthumbsdown\end{Large}\parbox{15.9cm}{#1}\vskip 1em}
+\newcommand{\attention}[1]{\vskip 1em\begin{Large}\leftpointright\end{Large}\parbox{14cm}{#1} \vskip 1em}
+\newcommand{\good}[1]{\vskip 1em\begin{Large}\leftthumbsup\end{Large}\parbox{14cm}{#1}\vskip 1em}
+\newcommand{\bad}[1]{\vskip 1em\begin{Large}\leftthumbsdown\end{Large}\parbox{14cm}{#1}\vskip 1em}
 
 %exercises
 \RequirePackage{exercise}
@@ -137,9 +140,9 @@
 \makeatletter\def\endExerciseEnv{\termineliste{1}\@EndExeBox\nobreak\vskip .5em\hrule\vskip 1em\needspace{-10\baselineskip}}\makeatother
 
 %indexes
-%\RequirePackage{multind} %TODO
-%\makeindex{en-ro}
-%\newcommand{\engl}[2]{#1 (en. \textsl{#2})\index{en-ro}{#2}}
+\RequirePackage{multind} %TODO
+\makeindex{en-ro}
+\newcommand{\engl}[2]{#1 (en. \textsl{#2})\index{en-ro}{#2}}
 
 %listings
 \RequirePackage{listings}
@@ -182,7 +185,7 @@ extendedchars}[keywords]
     pdfmenubar=true,        % show Acrobat’s menu?
     pdffitwindow=false,     % window fit to page when opened
     pdfstartview={FitH},    % fits the width of the page to the window
-    pdftitle={Dezvoltare web cu PHP},    % title
+    pdftitle={Dezvoltare web cu PHP},    % title TODO: make it use \@title
     pdfauthor={Flavius Aspra},     % author
     pdfsubject={Programare},   % subject of the document
     pdfcreator={pdflatex},   % creator of the document
