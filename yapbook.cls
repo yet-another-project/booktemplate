@@ -47,6 +47,7 @@
 %------------------------------------------------------------------------------
 %Semantic structure (and structure in general)
 %------------------------------------------------------------------------------
+
 \newcommand{\@subtitle}{}
 \newcommand{\subtitle}[1]{
    \renewcommand{\@subtitle}{#1}
@@ -149,8 +150,6 @@
 
 %indexes
 \RequirePackage{multind} %TODO
-\makeindex{en-ro}
-\newcommand{\engl}[2]{#1 (en. \textsl{#2})\index{en-ro}{#2}}
 
 %listings
 \RequirePackage{listings}
