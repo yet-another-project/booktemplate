@@ -180,6 +180,11 @@ extendedchars}[keywords]
     escapeinside={\%*}{*)},     % if you want to add a comment within your code
     mathescape=false
 }
+
+%php syntax hilight
+\RequirePackage[chapter]{minted}
+\newminted[phplisting]{php}{mathescape,linenos,numbersep=5pt,gobble=0,frame=lines,framesep=2mm,funcnamehighlighting=true,tabsize=4}
+
 %------------------------------------------------------------------------------
 %Visuals (hard-coded for all YAP books)
 %------------------------------------------------------------------------------
