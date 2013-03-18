@@ -181,9 +181,29 @@ extendedchars}[keywords]
     mathescape=false
 }
 
-%php syntax hilight
+%php syntax highlight
 \RequirePackage[chapter]{minted}
-\newminted[phplisting]{php}{mathescape,linenos,numbersep=5pt,gobble=0,frame=lines,framesep=2mm,funcnamehighlighting=true,tabsize=4}
+\definecolor{mintedbackground}{rgb}{0.95,0.95,0.95}
+\newmintedfile{php}{
+    bgcolor=mintedbackground,
+    fontfamily=tt,
+    linenos=true,
+    numberblanklines=true,
+    numbersep=12pt,
+    numbersep=5pt,
+    gobble=0,
+    frame=leftline,
+    framerule=0.4pt,
+    framesep=2mm,
+    funcnamehighlighting=true,
+    tabsize=4,
+    obeytabs=false,
+    mathescape=false
+    samepage=false, %with this setting you can force the list to appear on the same page
+    showspaces=false,
+    showtabs =false,
+    texcl=false,
+}
 
 %------------------------------------------------------------------------------
 %Visuals (hard-coded for all YAP books)
