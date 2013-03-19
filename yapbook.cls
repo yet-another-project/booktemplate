@@ -184,7 +184,7 @@ extendedchars}[keywords]
 %php syntax highlight
 \RequirePackage[chapter]{minted}
 \definecolor{mintedbackground}{rgb}{0.95,0.95,0.95}
-\newmintedfile{php}{
+\newmintedfile[phpfile]{php}{
     bgcolor=mintedbackground,
     fontfamily=tt,
     linenos=true,

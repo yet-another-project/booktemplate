@@ -1,3 +1,18 @@
+# Dependencies #
+
+This template is using minted for syntax highlight, minted depends on
+[Pygments](http://pygments.org/).
+
+Under ArchLinux you can install the package `python2-pigments`.
+
+
+# Contributors #
+
+* Flavius Aspra, github: https://github.com/flavius
+* Lazar Florentin, github: https://github.com/starlays
+
+# License #
+
 This is a template for books. A mention in your `Thanks` section with a link to
 https://github.com/yet-another-project would be highly appreciated (this is the
 electronic version of the [WTFPL
