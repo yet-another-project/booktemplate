@@ -21,7 +21,8 @@ License](http://www.gnu.org/licenses/license-list.html#WTFPL)), that is:
                DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE
                        Version 2, December 2004
 
-    Copyright (C) 2012 Flavius Aspra <flavius.as@gmail.com>
+    Copyright (C) 2012-2013 Flavius Aspra <flavius.as@gmail.com>
+    Copyright (C) 2013 Lazar Florentin
 
     Everyone is permitted to copy and distribute verbatim or modified
     copies of this license document, and changing it is allowed as long
