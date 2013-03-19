@@ -3,10 +3,10 @@
 This template is using minted for syntax highlight, minted depends on
 [Pygments](http://pygments.org/).
 
-Under ArchLinux you can install the package `python2-pigments`.
+Under ArchLinux you must install the package `python2-pigments`, otherwise
+it won't work.
 
-
-# Contributors #
+# Authors #
 
 * Flavius Aspra, github: https://github.com/flavius
 * Lazar Florentin, github: https://github.com/starlays
