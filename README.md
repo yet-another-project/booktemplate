@@ -8,8 +8,8 @@ it won't work.
 
 # Authors #
 
-* Flavius Aspra, github: https://github.com/flavius
-* Lazar Florentin, github: https://github.com/starlays
+* [Flavius Aspra](http://flavius.github.com/)
+* [Lazar Florentin](https://github.com/starlays)
 
 # License #
 
